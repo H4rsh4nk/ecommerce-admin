@@ -50,16 +50,13 @@ export default function Categories() {
                     onChange={ev => setName(ev.target.value)}
                     value={name}
                 />
-                <select className="mb-0"
-                    onChange={ev => setParentCategory(ev.target.value)}
-                    value={parentCategory}
-                >
-                    <option value="" >No parent category</option>
+                <select className="mb-0" onChange={ev => setParentCategory(ev.target.value)} value={parentCategory}>
+                    <option key="no-parent" value="">No parent category</option>
                     {categories.length > 0 && categories.map(category => (
-                        <option value={category._id}>{ category.name }</option>
-                        
+                        <option key={category._id} value={category._id}>{category.name}</option>
                     ))}
                 </select>
+
                 <button className="btn-primary py-1">Save</button>
             </form>
             <table className="basic mt-4">
@@ -72,7 +69,7 @@ export default function Categories() {
                 </thead>
                 <tbody>
                     {categories.length > 0 && categories.map(category => (
-                        <tr>
+                        <tr key={catergory._id}>
                             <td>{category.name}</td>
                             <td>{category?.parent?.name}</td>
                                 <td>
